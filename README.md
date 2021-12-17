@@ -32,4 +32,13 @@ sudo chmod 777 /data/volumes/zap/
 
 ## Usage
 
-  * https://www.zaproxy.org/docs/docker/webswing/
+* https://www.zaproxy.org/docs/docker/webswing/
+
+## 自動起動
+
+```bash
+sudo cp ~/zaproxy/zaproxy.service /etc/systemd/system/
+sudo systemctl enable zaproxy.service
+sudo systemctl start zaproxy.service
+sudo systemctl status zaproxy.service
+```

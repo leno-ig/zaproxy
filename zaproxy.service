@@ -1,0 +1,17 @@
+[Unit]
+Description=zaproxy managed by docker-compose
+Requires=docker.service
+
+[Service]
+Type=simple
+Restart=always
+User=zap
+
+Environment=COMPOSE_FILE=/data/zap/zaproxy/docker-compose.yml
+
+ExecStartPre=-/usr/bin/docker compose -f ${COMPOSE_FILE} down
+ExecStart=/usr/bin/docker compose -f ${COMPOSE_FILE} up
+ExecStop=/usr/bin/docker compose -f ${COMPOSE_FILE} down
+
+[Install]
+WantedBy=multi-user.target
